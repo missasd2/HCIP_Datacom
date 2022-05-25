@@ -21,4 +21,22 @@ class ssh():
         print(ip + " login successfully")
         return ssh
 
+    def ssh_config(self, file, ip, username, password):
+        a = ssh.ssh_connect(ip, username, password)
+        cli = a.invoke_shell()
+        cli.send("N\n")
+        time.sleep(0.5)
+        cli.send("screen-length 0 temporary \n")
+        time.sleep(0.5)
+
+        f = open(file, 'r')
+        config_list = f.readlines()
+        for i in config_list:
+            cli.send(i)
+            time.sleep(0.5)
+
+        dis_this = cli.recv(999999).decode()
+        print(dis_this)
+        a.close()
+
 
