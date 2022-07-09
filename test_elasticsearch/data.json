@@ -1,0 +1,59 @@
+{
+  "took": 753,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 210,
+      "relation": "eq"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "syslog-security-20220709",
+        "_type": "_doc",
+        "_id": "KvWM4oEBrGbF0jwmVN86",
+        "_score": 1.0,
+        "_source": {
+          "type": "syslog",
+          "message": "<30>Jul  9 18:40:56 centos2 NetworkManager[800]: <info>  [1657363256.2502] dhcp4 (ens33):   lease time 1800",
+          "syslog_program": "NetworkManager",
+          "@version": "1",
+          "received_at": "2022-07-09T10:40:56.258Z",
+          "syslog_hostname": "centos2",
+          "received_from": "192.168.25.138",
+          "syslog_message": "<info>  [1657363256.2502] dhcp4 (ens33):   lease time 1800",
+          "syslog_timestamp": "Jul  9 18:40:56",
+          "syslog_pid": "800",
+          "@timestamp": "2022-07-09T10:40:56.000Z",
+          "host": "192.168.25.138"
+        }
+      },
+      {
+        "_index": "syslog-security-20220709",
+        "_type": "_doc",
+        "_id": "K_WM4oEBrGbF0jwmVN86",
+        "_score": 1.0,
+        "_source": {
+          "type": "syslog",
+          "message": "<29>Jul  9 18:40:56 centos2 dbus[609]: [system] Activating via systemd: service name='org.freedesktop.nm_dispatcher' unit='dbus-org.freedesktop.nm-dispatcher.service'",
+          "syslog_program": "dbus",
+          "@version": "1",
+          "received_at": "2022-07-09T10:40:56.270Z",
+          "syslog_hostname": "centos2",
+          "received_from": "192.168.25.138",
+          "syslog_message": "[system] Activating via systemd: service name='org.freedesktop.nm_dispatcher' unit='dbus-org.freedesktop.nm-dispatcher.service'",
+          "syslog_timestamp": "Jul  9 18:40:56",
+          "syslog_pid": "609",
+          "@timestamp": "2022-07-09T10:40:56.000Z",
+          "host": "192.168.25.138"
+        }
+      }
+    ]
+  }
+}
