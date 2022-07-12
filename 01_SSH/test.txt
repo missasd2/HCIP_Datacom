@@ -1,0 +1,87 @@
+!CfgFileCrc:12427aab
+!Software Version V200R005C10SPC607B607
+!Last configuration was updated at 2022-07-13 00:18:47 UTC
+!Last configuration was saved at 2022-07-13 00:18:51 UTC
+!MKHash 0000000000000000
+#
+sysname HUAWEI
+#
+device board 17 board-type CE-MPUB
+device board 1 board-type CE-LPUE
+#
+aaa
+ local-user python password irreversible-cipher $1c$sSso16[&$,$'<}lPU5p&~iX7|FDqNF0~`=Y,TwhuFF7(rGt!=z<$
+ local-user python service-type ssh
+ local-user python user-group manage-ug
+ #
+ authentication-scheme default
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default
+ #
+ domain default
+ #
+ domain default_admin
+#
+interface MEth0/0/0
+ undo shutdown
+#
+interface GE1/0/0
+ undo portswitch
+ undo shutdown
+ ip address 192.168.56.10 255.255.255.0
+#
+interface GE1/0/1
+ shutdown
+#
+interface GE1/0/2
+ shutdown
+#
+interface GE1/0/3
+ shutdown
+#
+interface GE1/0/4
+ shutdown
+#
+interface GE1/0/5
+ shutdown
+#
+interface GE1/0/6
+ shutdown
+#
+interface GE1/0/7
+ shutdown
+#
+interface GE1/0/8
+ shutdown
+#
+interface GE1/0/9
+ shutdown
+#
+interface NULL0
+#
+stelnet server enable
+sftp server enable
+ssh user python
+ssh user python authentication-type password
+ssh user python service-type sftp
+ssh user python sftp-directory cfcard:
+ssh authorization-type default root
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+ssh server dh-exchange min-len 1024
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+user-interface con 0
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ protocol inbound ssh
+#
+vm-manager
+#
+return
