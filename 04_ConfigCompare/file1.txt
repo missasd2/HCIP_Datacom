@@ -1,0 +1,98 @@
+<CE1>display cur
+!Software Version V200R005C10SPC607B607
+!Last configuration was updated at 2022-07-17 21:43:15+00:00
+!Last configuration was saved at 2022-07-17 21:44:39+00:00 by python
+#
+sysname CE1
+#
+device board 17 board-type CE-MPUB
+device board 1 board-type CE-LPUE
+#
+aaa
+ local-user python password irreversible-cipher $1c$\cHPDSoa_=$Vk[y0trt|Y^&7t!Fm^cHsyp\(1_$4*;b^fJW.-d'$
+ local-user python service-type ssh
+ local-user python user-group manage-ug
+ local-user netconf password irreversible-cipher $1c$u`TnThgUdQ$(i}!J*\x7ZcLMT$7bpjA~-9@E/3y\&MJ~I6f0#*I$
+ local-user netconf service-type ssh
+ local-user netconf level 3
+ #
+ authentication-scheme default
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default
+ #
+ domain default
+ #
+ domain default_admin
+#
+interface MEth0/0/0
+ undo shutdown
+#
+interface GE1/0/0
+ undo portswitch
+ undo shutdown
+ ip address 192.168.56.100 255.255.255.0
+#
+interface GE1/0/1
+ shutdown
+#
+interface GE1/0/2
+ undo portswitch
+ description Config by NETCONF
+ shutdown
+ ip address 192.169.3.1 255.255.255.0
+#
+interface GE1/0/3
+ shutdown
+#
+interface GE1/0/4
+ shutdown
+#
+interface GE1/0/5
+ shutdown
+#
+interface GE1/0/6
+ shutdown
+#
+interface GE1/0/7
+ shutdown
+#
+interface GE1/0/8
+ shutdown
+#
+interface GE1/0/9
+ shutdown
+#
+interface NULL0
+#
+stelnet server enable
+snetconf server enable
+ssh user netconf
+ssh user netconf authentication-type password
+ssh user netconf service-type snetconf
+ssh user python
+ssh user python authentication-type password
+ssh user python service-type stelnet
+ssh authorization-type default aaa
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+ssh server dh-exchange min-len 1024
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+user-interface con 0
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ protocol inbound ssh
+#
+netconf
+ protocol inbound ssh port 830
+#
+vm-manager
+#
+return
+<CE1>
