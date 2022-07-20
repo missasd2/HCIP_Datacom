@@ -10,3 +10,10 @@ pip install kafka-python
 # 方法二
 切换到3.6版本
 ```
+
+打印当前时间
+
+```python
+import time
+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+```
